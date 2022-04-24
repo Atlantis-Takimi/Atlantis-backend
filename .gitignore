@@ -58,4 +58,4 @@ build/
 hs_err_pid*
 
 ## Spring ##
-.properties
+*.properties
