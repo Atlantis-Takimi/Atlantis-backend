@@ -2,13 +2,7 @@ package com.atlantis.model.Admin;
 
 import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.TypeDef;
-import org.springframework.data.annotation.Id;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 
 @Data
@@ -16,15 +10,13 @@ import javax.persistence.Table;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @Entity
-@Table(name = "Admin")
-@TypeDef(name = "json", typeClass = JsonStringType.class)
+@Table(name = "admins")
 public class Admin {
-
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
-    @Column(name = "idAdmin", nullable = false)
-    private Long id;
+    @Column(name = "adminId", nullable = false)
+    private String adminId;
 
     @NonNull
     private String firstName;
