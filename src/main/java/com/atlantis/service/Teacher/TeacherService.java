@@ -1,4 +1,4 @@
-package service.Teacher;
+package com.atlantis.service.Teacher;
 
 import com.atlantis.model.Teacher.Teacher;
 import com.atlantis.repository.TeacherRepository;

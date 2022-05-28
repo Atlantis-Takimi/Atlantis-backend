@@ -1,8 +1,8 @@
-package controller.Teacher;
+package com.atlantis.controller.Teacher;
 
 import com.atlantis.model.Teacher.Teacher;
 import org.springframework.web.bind.annotation.*;
-import service.Teacher.TeacherService;
+import com.atlantis.service.Teacher.TeacherService;
 
 import java.util.List;
 import java.util.Optional;
