@@ -25,5 +25,5 @@ import java.util.Optional;
         @Query("DELETE FROM Teacher a WHERE a.idTeacher=:id")
         void deleteTeacherById(@Param("id") String id);
 
-        boolean existsTeacherByStudentId(String id);
+        boolean existsTeacherByTeacherId(String id);
     }

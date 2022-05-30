@@ -27,7 +27,7 @@ public class AdminService {
         Optional<Admin> AdminByID = adminRepository.findAdminById(admin.getAdminId());
         if(AdminByID.isPresent()){
             throw new IllegalStateException(
-                    "There is already a Student with the given id!");
+                    "There is already a Admin with the given id!");
         }
         adminRepository.save(admin);
         System.out.println(admin);
