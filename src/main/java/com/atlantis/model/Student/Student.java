@@ -26,7 +26,7 @@ public class Student {
     @Column(name = "idStudent", nullable = false)
     private String idStudent;
 
-    @NonNull private Integer studentNumber;
+    @NonNull private String studentNumber;
     @NonNull private String name;
     @NonNull private String surname;
     @NonNull private Integer grade;

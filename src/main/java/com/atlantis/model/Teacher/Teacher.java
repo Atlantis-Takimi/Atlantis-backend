@@ -23,6 +23,7 @@ public class Teacher {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     @Column(name = "idTeacher", nullable = false)
     @NonNull private String idTeacher;
+    @NonNull private String teacherNumber;
     @NonNull private String name;
     @NonNull private String surname;
 
