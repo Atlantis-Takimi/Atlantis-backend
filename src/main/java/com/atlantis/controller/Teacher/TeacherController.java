@@ -17,9 +17,9 @@ public class TeacherController {
         this.teacherService = teacherService;
     }
     @GetMapping
-    public List<Teacher> getTeacher(@RequestParam(name="TeacherId", required = false) String TeacherId){
-        if(TeacherId != null){
-            return List.of(teacherService.getTeacher(TeacherId).orElseThrow(()->
+    public List<Teacher> getTeacher(@RequestParam(name="idTeacher", required = false) String idTeacher){
+        if(idTeacher != null){
+            return List.of(teacherService.getTeacher(idTeacher).orElseThrow(()->
                     new IllegalStateException("Teacher does not exist")));
         }
         else{
@@ -31,17 +31,17 @@ public class TeacherController {
         teacherService.addNewTeacher(teacher);
     }
 
-    @DeleteMapping(path="{TeacherId}")
-    public void deleteTeacherById(@PathVariable("TeacherId") String TeacherId){
-        teacherService.deleteTeacher(TeacherId);
+    @DeleteMapping(path="{idTeacher}")
+    public void deleteTeacherById(@PathVariable("idTeacher") String idTeacher){
+        teacherService.deleteTeacher(idTeacher);
     }
-    @PutMapping(path="{TeacherId}")
+    @PutMapping(path="{idTeacher}")
     public void updateTeacher(
-            @PathVariable("TeacherId") String TeacherId,
+            @PathVariable("idTeacher") String idTeacher,
             @RequestParam(required = false) Optional<String> name,
             @RequestParam(required = false) Optional<String> surname)
     {
-        teacherService.updateTeacher(TeacherId, name,surname);
+        teacherService.updateTeacher(idTeacher, name,surname);
     }
 
 }

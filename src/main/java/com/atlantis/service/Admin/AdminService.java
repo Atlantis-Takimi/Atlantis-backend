@@ -19,13 +19,13 @@ public class AdminService {
         return adminRepository.findAll();
     }
 
-    public Optional<Admin> getAdmin(String id){
-        return adminRepository.findAdminById(id);
+    public Optional<Admin> getAdmin(String adminId){
+        return adminRepository.findAdminById(adminId);
     }
 
     public void addNewAdmin(Admin admin) {
-        Optional<Admin> AdminByID = adminRepository.findAdminById(admin.getAdminId());
-        if(AdminByID.isPresent()){
+        Optional<Admin> AdminById = adminRepository.findAdminById(admin.getAdminId());
+        if(AdminById.isPresent()){
             throw new IllegalStateException(
                     "There is already a Admin with the given id!");
         }

@@ -19,7 +19,7 @@ public interface AdminRepository extends JpaRepository<Admin,String> {
     @Transactional
     @Modifying
     @Query("DELETE FROM Admin a WHERE a.adminId=:id")
-    void deleteAdminByID(@Param("id") String id);
+    void deleteAdminById(@Param("id") String adminId);
 
-    boolean existsAdminByAdminNumber(Integer id);
+    boolean existsAdminByAdminId(String adminId);
 }
