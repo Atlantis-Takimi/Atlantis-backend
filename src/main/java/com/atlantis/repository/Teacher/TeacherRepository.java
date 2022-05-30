@@ -1,4 +1,4 @@
-package com.atlantis.repository;
+package com.atlantis.repository.Teacher;
 
 import com.atlantis.model.Teacher.Teacher;
 import org.springframework.data.jpa.repository.JpaRepository;

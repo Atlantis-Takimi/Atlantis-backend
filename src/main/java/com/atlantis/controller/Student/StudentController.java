@@ -19,7 +19,7 @@ public class StudentController {
 
     @GetMapping()
     public List<Student> getStudent(@RequestParam(name="studentId", required = false) String studentId,
-                                    @RequestParam(name="studentNumber", required = false) Integer studentNumber){
+                                    @RequestParam(name="studentNumber", required = false) String studentNumber){
         if(studentId != null){
             return List.of(studentService.getStudent(studentId).orElseThrow(()->
                     new IllegalStateException("Student does not exist")));

@@ -29,12 +29,12 @@ public class StudentService {
         return studentRepository.findStudentById(id);
     }
 
-    public Optional<Student> getStudentByNumber(Integer number){
+    public Optional<Student> getStudentByNumber(String number){
         return studentRepository.findStudentByNumber(number);
     }
     public List<Student> getExampleStudent(){
         return List.of(
-                new Student(180290050,"Ilker","Atik",4,
+                new Student("180290050","Ilker","Atik",4,
                         List.of(new Lesson("YMU101","Yazilim Giris"),
                                 new Lesson("ATA101","Ataturk Ilkeleri")),
                         "290","290")

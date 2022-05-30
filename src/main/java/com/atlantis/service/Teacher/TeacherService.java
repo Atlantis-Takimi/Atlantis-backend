@@ -1,7 +1,7 @@
 package com.atlantis.service.Teacher;
 
 import com.atlantis.model.Teacher.Teacher;
-import com.atlantis.repository.TeacherRepository;
+import com.atlantis.repository.Teacher.TeacherRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

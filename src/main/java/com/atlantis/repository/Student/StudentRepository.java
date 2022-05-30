@@ -18,7 +18,7 @@ public interface StudentRepository
     Optional<Student> findStudentById(String id);
 
     @Query("SELECT s FROM Student s WHERE s.studentNumber = ?1")
-    Optional<Student> findStudentByNumber(Integer id);
+    Optional<Student> findStudentByNumber(String id);
 
     @Transactional
     @Modifying
