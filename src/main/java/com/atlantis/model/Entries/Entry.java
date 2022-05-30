@@ -16,7 +16,7 @@ import java.util.Date;
 @Entity
 @Table(name = "entries")
 @TypeDef(name = "json", typeClass = JsonStringType.class)
-public class Entries {
+public class Entry {
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
@@ -28,6 +28,7 @@ public class Entries {
     @NonNull private String entryType;
     @NonNull private String entryTitle;
     @NonNull private String userType;
+    @Column(name = "userId", nullable = false)
     @NonNull private String userId;
 
     @PrePersist
@@ -39,6 +40,5 @@ public class Entries {
     protected void onUpdate() {
         entryLastUpdated = new Date();
     }
-
 
 }

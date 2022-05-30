@@ -4,10 +4,14 @@ import lombok.NonNull;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 public class EntryDetails {
+    @ManyToOne
+    @JoinColumn(name = "entryId")
     @Column(name = "entryId", nullable = false)
-    @NonNull private String entryId;
+    @NonNull private Entry entryId;
     @NonNull private Integer replyCount;
     @NonNull private String[] entryTags;
     @NonNull private String entryCategory;
