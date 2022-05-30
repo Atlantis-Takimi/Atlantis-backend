@@ -23,7 +23,7 @@ public interface StudentRepository
     @Transactional
     @Modifying
     @Query("DELETE FROM Student s WHERE s.studentNumber=:number")
-    void deleteStudentByNumber(@Param("number") Integer number);
+    void deleteStudentByNumber(@Param("number") String number);
 
-    boolean existsStudentByStudentNumber(Integer number);
+    boolean existsStudentByStudentNumber(String number);
 }

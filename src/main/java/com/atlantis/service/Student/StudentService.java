@@ -1,6 +1,5 @@
 package com.atlantis.service.Student;
 
-
 import com.atlantis.model.Student.Student;
 import com.atlantis.model.University.Lesson;
 import com.atlantis.repository.Student.StudentRepository;
@@ -61,7 +60,7 @@ public class StudentService {
         studentRepository.deleteById(studentId);
     }
 
-    public void deleteStudentByNumber(Integer studentNumber) {
+    public void deleteStudentByNumber(String studentNumber) {
         boolean exist =studentRepository.existsStudentByStudentNumber(studentNumber);
         if(!exist){
             throw new IllegalStateException(

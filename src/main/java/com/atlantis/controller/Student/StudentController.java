@@ -44,7 +44,7 @@ public class StudentController {
     }
 
     @DeleteMapping(path="/number/{studentNumber}")
-    public void deleteStudentByNumber(@PathVariable("studentNumber") Integer studentNumber){
+    public void deleteStudentByNumber(@PathVariable("studentNumber") String studentNumber){
         studentService.deleteStudentByNumber(studentNumber);
     }
     @PutMapping(path="{studentId}")

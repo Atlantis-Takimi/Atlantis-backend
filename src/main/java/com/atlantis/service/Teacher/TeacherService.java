@@ -21,8 +21,8 @@ public class TeacherService {
     public Optional<Teacher> getTeacher(String id){
         return teacherRepository.findTeacherById(id);
     }
-    public Optional<Teacher> getTeacherByNumber(String role){
-        return teacherRepository.findTeacherByRole(role);
+    public Optional<Teacher> getTeacherByNumber(String number){
+        return teacherRepository.findTeacherByNumber(number);
     }
     public void addNewTeacher(Teacher teacher) {
         Optional<Teacher> TeacherById = teacherRepository.findTeacherById(teacher.getIdTeacher());

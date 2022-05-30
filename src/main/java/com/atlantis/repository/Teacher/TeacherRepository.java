@@ -17,13 +17,16 @@ import java.util.Optional;
         @Query("SELECT a FROM Teacher a WHERE a.idTeacher = ?1")
         Optional<Teacher> findTeacherById(String id);
 
-        @Query("SELECT a FROM Teacher a WHERE a.TeacherRole = ?1")
+        @Query("SELECT a FROM Teacher a WHERE a.teacherNumber = ?1")
+        Optional<Teacher> findTeacherByNumber(String number);
+
+        @Query("SELECT a FROM Teacher a WHERE a.role = ?1")
         Optional<Teacher> findTeacherByRole(String role);
 
         @Transactional
         @Modifying
         @Query("DELETE FROM Teacher a WHERE a.idTeacher=:id")
-        void deleteTeacherById(@Param("id") String id);
+        void deleteTeacherById(@Param("id") String idTeacher);
 
-        boolean existsTeacherByTeacherId(String id);
+        boolean existsTeacherByIdTeacher(String idTeacher);
     }
