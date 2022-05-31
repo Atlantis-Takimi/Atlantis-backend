@@ -1,4 +1,4 @@
-package com.atlantis.model.Entries;
+package com.atlantis.model.Entry;
 
 import lombok.NonNull;
 import org.hibernate.annotations.Type;

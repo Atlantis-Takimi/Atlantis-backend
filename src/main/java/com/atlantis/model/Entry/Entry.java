@@ -1,4 +1,4 @@
-package com.atlantis.model.Entries;
+package com.atlantis.model.Entry;
 
 
 import com.vladmihalcea.hibernate.type.json.JsonStringType;
