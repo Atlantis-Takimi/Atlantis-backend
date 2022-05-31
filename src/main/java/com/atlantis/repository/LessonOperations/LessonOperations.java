@@ -1,6 +1,7 @@
-package com.atlantis.repository.Admin;
+package com.atlantis.repository.LessonOperations;
 
-import com.atlantis.model.Admin.Admin;
+
+import com.atlantis.model.University.Lesson;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -11,15 +12,13 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
 
 @Repository
-public interface AdminRepository extends JpaRepository<Admin,String> {
+public interface LessonOperations extends JpaRepository<Lesson,String> {
 
-    @Query("SELECT a FROM Admin a WHERE a.adminId = ?1")
-    Optional<Admin> findAdminById(String id);
+    @Query("SELECT a FROM Lesson a WHERE a.lessonId =?1")
+    Optional<Lesson> findLessonByLessonId(String lessonId);
 
     @Transactional
     @Modifying
-    @Query("DELETE FROM Admin a WHERE a.adminId=:id")
-    void deleteAdminByLessonId(@Param("id") String adminId);
-
-    boolean existsAdminByAdminId(String adminId);
+    @Query("DELETE FROM Lesson a WHERE a.lessonId=:id")
+    void deleteLessonByLessonId(@Param("id") String id);
 }
