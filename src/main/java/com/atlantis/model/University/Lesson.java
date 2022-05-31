@@ -10,7 +10,6 @@ import java.util.Date;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @JsonDeserialize(using = LessonDeserializer.class)
-
 public class Lesson {
 
     @NonNull
