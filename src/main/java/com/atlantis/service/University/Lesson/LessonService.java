@@ -21,7 +21,7 @@ public class LessonService {
         return lessonRepository.findAll();
     }
 
-    public Optional<Lesson> getLesson(String id){
+    public Optional<Lesson> getLessonById(String id){
         return lessonRepository.findLessonById(id);
     }
 
@@ -40,7 +40,7 @@ public class LessonService {
         System.out.println(lesson);
     }
 
-    public void deleteLesson(String lessonId) {
+    public void deleteLessonById(String lessonId) {
         boolean exist =lessonRepository.existsLessonByLessonId(lessonId);
         if(!exist){
             throw new IllegalStateException(
@@ -59,7 +59,7 @@ public class LessonService {
     }
 
     @Transactional
-    public void updateStudent(String lessonId, Optional<String> lessonName, Optional<Date> year, Optional<String> term){
+    public void updateLesson(String lessonId, Optional<String> lessonName, Optional<Date> year, Optional<String> term){
         Lesson lesson = lessonRepository.findLessonById(lessonId).orElseThrow(()->
                 new IllegalStateException("Lesson does not exist"));
         lessonName.ifPresent(lesson::setLessonName);
