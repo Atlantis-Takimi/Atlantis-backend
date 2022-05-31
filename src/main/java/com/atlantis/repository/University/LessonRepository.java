@@ -1,6 +1,5 @@
 package com.atlantis.repository.University;
 
-import com.atlantis.model.Student.Student;
 import com.atlantis.model.University.Lesson;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -17,12 +16,18 @@ public interface LessonRepository extends JpaRepository<Lesson, String> {
     Optional<Lesson> findLessonById(String id);
 
     @Query("SELECT l FROM Lesson l WHERE l.lessonName = ?1")
-    Optional<Student> findStudentByName(String name);
+    Optional<Lesson> findLessonByName(String name);
 
     @Transactional
     @Modifying
-    @Query("DELETE FROM Lesson l WHERE l.lessonId=:number")
-    void deleteLessonById(@Param("number") String id);
+    @Query("DELETE FROM Lesson l WHERE l.lessonId=:id")
+    void deleteLessonById(@Param("id") String id);
+
+    @Transactional
+    @Modifying
+    @Query("DELETE FROM Lesson l WHERE l.lessonName=:lessonName")
+    void deleteLessonByLessonName(@Param("lessonName") String lessonName);
 
     boolean existsLessonByLessonId(String id);
+    boolean existsLessonByLessonName(String name);
 }
