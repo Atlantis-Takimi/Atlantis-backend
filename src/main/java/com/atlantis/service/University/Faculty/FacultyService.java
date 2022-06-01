@@ -1,11 +1,10 @@
 package com.atlantis.service.University.Faculty;
 
 import com.atlantis.model.University.Faculty;
-import com.atlantis.model.University.Lesson;
 import com.atlantis.repository.University.FacultyRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
+
 import java.util.List;
 import java.util.Optional;
 
