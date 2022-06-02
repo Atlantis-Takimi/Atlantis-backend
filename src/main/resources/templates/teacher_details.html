@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Teacher Details</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        table {
+            empty-cells: show;
+            margin: 20px auto;
+        }
+
+        table,
+        td,
+        th {
+            border-collapse: collapse;
+        }
+        tr:nth-child(odd) {
+            background: #eee;
+        }
+        th,
+        td {
+            padding: 10px;
+            border: solid 1px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div >
+        <table style="border : 1px;">
+            <tr>
+                <th>Id</th>
+                <th>Number</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Grade</th>
+                <th colspan="2">Lessons</th>
+            </tr>
+
+            <tr  th:each="teacher : ${teachers}">
+                <td  th:text="${teacher.idTeacher}"></td>
+                <td  th:text="${teacher.teacherNumber}"></td>
+                <td  th:text="${teacher.name}"></td>
+                <td  th:text="${teacher.surname}"></td>
+                <td  th:text="${teacher.role}"></td>
+                <td>
+                    <ul>
+                        <li th:each="lesson : ${student.lessons}">
+                            <span th:text="${lesson.lessonId}">d</span>
+                            <span th:text="${lesson.lessonName}">s</span>
+                         </li>
+                    </ul>
+                </td>
+            </tr >
+        </table>
+    </div>
+</body>
+</html>
