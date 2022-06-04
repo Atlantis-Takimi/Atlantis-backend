@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Lesson Details</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        table {
+            empty-cells: show;
+            margin: 20px auto;
+        }
+
+        table,
+        td,
+        th {
+            border-collapse: collapse;
+        }
+        tr:nth-child(odd) {
+            background: #eee;
+        }
+        th,
+        td {
+            padding: 10px;
+            border: solid 1px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div >
+        <table style="border : 1px;">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Year</th>
+                <th>Term</th>
+            </tr>
+
+            <tr  th:each="lesson : ${lessons}">
+                <td  th:text="${lesson.lessonId}"></td>
+                <td  th:text="${lesson.lessonName}"></td>
+                <td  th:text="${lesson.year}"></td>
+                <td  th:text="${lesson.term}"></td>
+            </tr >
+        </table>
+    </div>
+</body>
+</html>
