@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Department Details</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style>
+        table {
+            empty-cells: show;
+            margin: 20px auto;
+        }
+
+        table,
+        td,
+        th {
+            border-collapse: collapse;
+        }
+        tr:nth-child(odd) {
+            background: #eee;
+        }
+        th,
+        td {
+            padding: 10px;
+            border: solid 1px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div >
+        <table style="border : 1px;">
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+            </tr>
+
+            <tr  th:each="department : ${departments}">
+                <td  th:text="${department.departmentId}"></td>
+                <td  th:text="${department.departmentName}"></td>
+            </tr >
+        </table>
+    </div>
+</body>
+</html>
