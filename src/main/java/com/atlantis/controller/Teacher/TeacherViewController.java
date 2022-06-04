@@ -19,7 +19,7 @@ public class TeacherViewController {
     @RequestMapping("/teachers")
     public String getTeacher(Model model){
         List<Teacher> res = teacherService.getTeachers();
-        model.addAttribute("Teachers", res);
-        return "Teacher_details";
+        model.addAttribute("teachers", res);
+        return "teacher_details";
     }
 }

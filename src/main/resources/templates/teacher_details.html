@@ -34,7 +34,7 @@
                 <th>Number</th>
                 <th>Name</th>
                 <th>Surname</th>
-                <th>Grade</th>
+                <th>Role</th>
                 <th colspan="2">Lessons</th>
             </tr>
 
@@ -46,7 +46,7 @@
                 <td  th:text="${teacher.role}"></td>
                 <td>
                     <ul>
-                        <li th:each="lesson : ${student.lessons}">
+                        <li th:each="lesson : ${teacher.lessons}">
                             <span th:text="${lesson.lessonId}">d</span>
                             <span th:text="${lesson.lessonName}">s</span>
                          </li>
