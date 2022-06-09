@@ -1,12 +1,11 @@
 package com.atlantis.auth;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
-import io.jsonwebtoken.security.Keys;
-import java.security.Key;
-import java.util.Date;
-
 import org.springframework.stereotype.Service;
+
+import java.util.Date;
 
 
 @Service
@@ -22,9 +21,20 @@ public class TokenManager {
                 signWith(SignatureAlgorithm.ES256, secretKey).
                 compact();
     }
-    public boolean tokenValidate(String token){
+    public boolean tokenValidate(String token) // Token'ın valid olup olmadığını doğrulamak için metodumuzu oluştururuz.
+    {
+        if (getUsernameToken(token) != null && isExpired(token) ) {
+            return true;
+        }
+            return false;
 
     }
-    public String getUserFromToken(String token){
+    public String getUsernameToken(String token){
+        Claims claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
+        return claims.getSubject();
+    }
+    public boolean isExpired(String token){
+        Claims claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
+        return claims.getExpiration().before(new Date(System.currentTimeMillis()));
     }
 }
