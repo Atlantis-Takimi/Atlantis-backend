@@ -28,4 +28,4 @@ Security kısmında yapılanlar:
 -
 - Dependency'ler arasına spring security gereksinimleri tanımlandı
 - Proje run edildi ve orada default olarak üretilen password'ü kopyalayıp "http://localhost:8080/" adresinde bulunan giriş ekranına yazılarak owner'lar listelendi.
-- 
+- Web konfigürasyonları sağlandı.
