@@ -50,7 +50,7 @@ public class LessonService {
     }
 
     public void deleteLessonByName(String lessonName) {
-        boolean exist =lessonRepository.existsLessonByLessonName(lessonName);
+        boolean exist =  lessonRepository.existsLessonByLessonName(lessonName);
         if(!exist){
             throw new IllegalStateException(
                     "student with name="+ lessonName+ " does not exist!");

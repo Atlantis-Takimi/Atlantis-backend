@@ -1,17 +1,22 @@
 package com.atlantis.model.Entry;
 
-import lombok.NonNull;
+import lombok.*;
 import org.hibernate.annotations.Type;
+import javax.persistence.*;
 
-import javax.persistence.Column;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
+@Data
+@AllArgsConstructor
+@RequiredArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "entry_details")
 public class EntryDetails {
     @ManyToOne
     @JoinColumn(name = "entryId")
     @Column(name = "entryId", nullable = false)
+    @Id
     @NonNull private Entry entryId;
+
     @NonNull private Integer replyCount;
     @NonNull private String[] entryTags;
     @NonNull private String entryCategory;

@@ -15,7 +15,6 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "entries")
-@TypeDef(name = "json", typeClass = JsonStringType.class)
 public class Entry {
     @Id
     @GeneratedValue(generator = "system-uuid")
