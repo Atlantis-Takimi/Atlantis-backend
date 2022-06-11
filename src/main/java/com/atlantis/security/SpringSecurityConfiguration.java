@@ -18,9 +18,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 //
 //}
 @Configuration
-public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
+public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
-    public SecurityConfiguration() {
+    public SpringSecurityConfiguration() {
         super(true); // Disable defaults
     }
 

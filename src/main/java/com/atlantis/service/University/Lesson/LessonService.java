@@ -46,7 +46,7 @@ public class LessonService {
             throw new IllegalStateException(
                     "lesson with id="+ lessonId+ " does not exist!");
         }
-        lessonRepository.deleteById(lessonId);
+        lessonRepository.deleteLessonById(lessonId);
     }
 
     public void deleteLessonByName(String lessonName) {

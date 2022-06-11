@@ -5,9 +5,10 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+
 public class StudentDetail {
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "idStudent")
     @Column(name = "idStudent", nullable = false)
     @NonNull private Student idStudent;

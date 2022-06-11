@@ -6,10 +6,10 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.Column;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 public class TeacherDetail {
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "idTeacher")
     @Column(name = "idTeacher", nullable = false)
     @NonNull
