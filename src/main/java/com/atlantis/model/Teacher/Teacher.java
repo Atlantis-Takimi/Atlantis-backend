@@ -13,7 +13,9 @@ import org.hibernate.annotations.TypeDefs;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 
 @Data
@@ -36,10 +38,13 @@ public class Teacher implements Serializable {
     @NonNull private String name;
     @NonNull private String surname;
 
-    @Type( type = "json" )
-    @Column( columnDefinition = "json" )
-    @NonNull
-    private List<Lesson> lessons;
+//    @Type( type = "json" )
+//    @Column( columnDefinition = "json" )
+
+    @ManyToMany(mappedBy = "enrolledTeachers")
+    private Set<Lesson> lessons = new HashSet<>();
+
+    //private List<Lesson> lessons;
     @NonNull private String role;
 
     @Transient private Faculty faculty;

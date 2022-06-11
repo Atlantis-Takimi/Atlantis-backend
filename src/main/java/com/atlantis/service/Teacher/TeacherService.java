@@ -1,7 +1,11 @@
 package com.atlantis.service.Teacher;
 
+import com.atlantis.model.Student.Student;
 import com.atlantis.model.Teacher.Teacher;
+import com.atlantis.model.University.Lesson;
 import com.atlantis.repository.Teacher.TeacherRepository;
+import com.atlantis.repository.University.LessonRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -11,9 +15,11 @@ import java.util.Optional;
 @Service
 public class TeacherService {
     private final TeacherRepository teacherRepository;
-
-    public TeacherService(TeacherRepository teacherRepository) {
+    private final LessonRepository lessonRepository;
+    @Autowired
+    public TeacherService(TeacherRepository teacherRepository, LessonRepository lessonRepository) {
         this.teacherRepository = teacherRepository;
+        this.lessonRepository = lessonRepository;
     }
     public List<Teacher> getTeachers(){
         return teacherRepository.findAll();
@@ -48,5 +54,25 @@ public class TeacherService {
                 new IllegalStateException("Teacher does not exist"));
         name.ifPresent(teacher::setName);
         surname.ifPresent(teacher::setSurname);
+    }
+
+    public Lesson enrollStudentToLesson(String teacherId, String lessonId){
+        Teacher teacher = teacherRepository.findTeacherById(teacherId).orElseThrow(()->
+                new IllegalStateException("Teacher does not exist"));
+        Lesson lesson = lessonRepository.findLessonById(lessonId).orElseThrow(()->
+                new IllegalStateException("Lesson does not exist"));
+
+        lesson.enrollTeacher(teacher);
+        return lessonRepository.save(lesson);
+    }
+
+    public Lesson unEnrollStudentFromLesson(String teacherId, String lessonId){
+        Teacher teacher = teacherRepository.findTeacherById(teacherId).orElseThrow(()->
+                new IllegalStateException("Teacher does not exist"));
+        Lesson lesson = lessonRepository.findLessonById(lessonId).orElseThrow(()->
+                new IllegalStateException("Lesson does not exist"));
+
+        lesson.unEnrollTeacher(teacher);
+        return lessonRepository.save(lesson);
     }
 }
