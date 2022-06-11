@@ -1,6 +1,5 @@
 package com.atlantis.model.Teacher;
 
-import com.atlantis.model.Student.Student;
 import lombok.NonNull;
 import org.hibernate.annotations.Type;
 
@@ -8,7 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
-public class TeacherDetail {
+public class TeacherDetails {
     @OneToOne
     @JoinColumn(name = "idTeacher")
     @Column(name = "idTeacher", nullable = false)
