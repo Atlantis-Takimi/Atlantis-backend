@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Service
@@ -20,12 +21,13 @@ public class EntryService {
         this.entryRepository = entryRepository;
         this.entryDetailsRepository = entryDetailsRepository;
     }
-    public List<Entry> getEntries(){
+    public List<Entry> getAllEntries(){
         return entryRepository.findAll();
     }
 
-    public Optional<Entry> getEntry(String entryId){
-        return entryRepository.findEntryByEntryId(entryId);
+    public Entry getEntry(String entryId){
+        return entryRepository.findEntryByEntryId(entryId).orElseThrow(()->
+                new IllegalStateException("Entry does not exist"));
     }
 
     public void addNewEntry(Entry entry){
@@ -71,6 +73,11 @@ public class EntryService {
         entryCategory.ifPresent(entryDetails::setEntryCategory);
         entryContent.ifPresent(entryDetails::setEntryContent);
 
+    }
+
+    public Map getJoinedDetails(String entryId){
+        return entryDetailsRepository.getJoinedDetailsByEntryId(entryId).orElseThrow(()->
+                new IllegalStateException("Entry does not exist"));
     }
 
 }
