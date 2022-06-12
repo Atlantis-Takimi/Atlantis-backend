@@ -10,7 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class TeacherService {
@@ -56,7 +58,7 @@ public class TeacherService {
         surname.ifPresent(teacher::setSurname);
     }
 
-    public Lesson enrollStudentToLesson(String teacherId, String lessonId){
+    public Lesson enrollTeacherToLesson(String teacherId, String lessonId){
         Teacher teacher = teacherRepository.findTeacherById(teacherId).orElseThrow(()->
                 new IllegalStateException("Teacher does not exist"));
         Lesson lesson = lessonRepository.findLessonById(lessonId).orElseThrow(()->
@@ -66,7 +68,7 @@ public class TeacherService {
         return lessonRepository.save(lesson);
     }
 
-    public Lesson unEnrollStudentFromLesson(String teacherId, String lessonId){
+    public Lesson unEnrollTeacherFromLesson(String teacherId, String lessonId){
         Teacher teacher = teacherRepository.findTeacherById(teacherId).orElseThrow(()->
                 new IllegalStateException("Teacher does not exist"));
         Lesson lesson = lessonRepository.findLessonById(lessonId).orElseThrow(()->
@@ -75,4 +77,13 @@ public class TeacherService {
         lesson.unEnrollTeacher(teacher);
         return lessonRepository.save(lesson);
     }
+
+    public Set<Lesson> getLessons(String teacherId){
+        Teacher teacher = teacherRepository.findTeacherById(teacherId).orElseThrow(()->
+                new IllegalStateException("Teacher does not exist"));
+
+        return teacher.getLessons();
+    }
+
+
 }
