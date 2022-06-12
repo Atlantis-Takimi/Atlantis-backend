@@ -7,6 +7,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.TypeDef;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Data
@@ -15,7 +16,7 @@ import java.util.Date;
 @NoArgsConstructor
 @Entity
 @Table(name = "entries")
-public class Entry {
+public class Entry{
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
@@ -29,6 +30,10 @@ public class Entry {
     @NonNull private String userType;
     @Column(name = "userId", nullable = false)
     @NonNull private String userId;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name="entryDetailsId")
+    private EntryDetails entryDetails;
 
     @PrePersist
     protected void onCreate() {

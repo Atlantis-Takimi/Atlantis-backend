@@ -57,8 +57,9 @@ public class EntryService {
 
         Entry entry = entryRepository.findEntryByEntryId(entryId).orElseThrow(()->
                 new IllegalStateException("Entry with entryId="+ entryId+" does not exist"));
-        EntryDetails entryDetails = entryDetailsRepository.findEntryDetailsByEntryId(entryId).orElseThrow(()->
-                new IllegalStateException("Entry with entryId="+ entryId+" does not exist"));
+        String entry_det_id = entry.getEntryDetails().getEntryDetailId();
+        EntryDetails entryDetails = entryDetailsRepository.findEntryDetailsByEntryDetailId(entry_det_id).orElseThrow(()->
+                new IllegalStateException("EntryDetail with entryDetailId="+ entry_det_id+" does not exist"));
 
         /*Entry table update*/
         entryTitle.ifPresent(entry::setEntryTitle);
