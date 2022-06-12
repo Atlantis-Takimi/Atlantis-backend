@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class StudentService {
@@ -97,7 +98,11 @@ public class StudentService {
         return lessonRepository.save(lesson);
     }
 
+    public Set<Lesson> getLessons(String studentId){
+        Student student = studentRepository.findStudentById(studentId).orElseThrow(()->
+                new IllegalStateException("Student does not exist"));
 
-
+        return student.getLessons();
+    }
 }
 

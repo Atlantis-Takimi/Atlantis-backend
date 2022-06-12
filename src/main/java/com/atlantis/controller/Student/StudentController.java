@@ -1,12 +1,14 @@
 package com.atlantis.controller.Student;
 
 import com.atlantis.model.Student.Student;
+import com.atlantis.model.University.Lesson;
 import com.atlantis.service.Student.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @RestController
 @RequestMapping("api/v1/student")
@@ -55,4 +57,22 @@ public class StudentController {
             ){
         studentService.updateStudent(studentId, name,surname);
     }
+
+    @PutMapping(path="/enrollment")
+    Lesson enrollStudentToLesson(@RequestParam(required = true) String studentId,
+                                 @RequestParam(required = true) String lessonId){
+        return studentService.enrollStudentToLesson(studentId, lessonId);
+    }
+
+    @PutMapping(path="/unenrollment")
+    Lesson unEnrollStudentFromLesson(@RequestParam(required = true) String studentId,
+                                 @RequestParam(required = true) String lessonId){
+        return studentService.unEnrollStudentFromLesson(studentId, lessonId);
+    }
+
+    @PostMapping(path = "/lessons")
+    Set<Lesson> getLessons(@RequestParam(required = true) String studentId){
+        return studentService.getLessons(studentId);
+    }
+
 }
